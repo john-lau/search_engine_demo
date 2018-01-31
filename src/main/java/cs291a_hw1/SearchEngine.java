@@ -11,16 +11,19 @@ import org.apache.solr.common.SolrDocumentList;
 
 public class SearchEngine {
 	
-	private static String highlight = "<mark>text</mark>";
+	SolrClient client;
+	
+	public SearchEngine() {
+		this.client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45").build();
+	}
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
         SolrClient client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45").build();
 
         SolrQuery query = new SolrQuery();
         
-        
         query.setQuery("title:feb");
-////        query.addFilterQuery("cat:electronics","store:amazon.com"); this is the filter
+//        query.addFilterQuery("cat:electronics","store:amazon.com"); this is the filter
         query.setFields("title"); //change title to argument
         query.setStart(0);
 //        
@@ -36,5 +39,14 @@ public class SearchEngine {
         }
         System.out.print(results.size());;
     }
+	
+	public QueryResponse searchQuery(SolrClient client, String userquery, String fields, int start) throws SolrServerException, IOException {
+		SolrQuery query = new SolrQuery();
+		query.setQuery(userquery);
+		query.setFields(fields);
+		query.setStart(start);
+		return client.query(query);
+	}
+	
 
 }

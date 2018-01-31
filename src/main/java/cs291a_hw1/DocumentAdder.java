@@ -1,7 +1,5 @@
 package cs291a_hw1;
 
-import static spark.Spark.*;
-
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
