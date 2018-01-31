@@ -33,5 +33,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/johnlau/Downloads/slf4j-1.7.25/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="lib" path="/Users/johnlau/Downloads/solr-7.2.1/dist/solr-solrj-7.2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/johnlau/Downloads/solr-7.2.1/dist/solrj-lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/johnlau/Downloads/solr-7.2.1/dist/solrj-lib/httpclient-4.5.3.jar"/>
+	<classpathentry kind="lib" path="/Users/johnlau/Downloads/solr-7.2.1/dist/solrj-lib/jcl-over-slf4j-1.7.7.jar"/>
+	<classpathentry kind="lib" path="/Users/johnlau/Downloads/solr-7.2.1/dist/solrj-lib/slf4j-api-1.7.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
