@@ -10,11 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class DocumentAdder {
-//    public static void main(String[] args) {
-//        get("/hello", (req, res) -> "Hello World");
-//    }
 	
-	private static int flush = 0; //so we can periodially flush
+	private static int flush = 0; //so we can periodically flush
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
 	    SolrClient client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45").build();
