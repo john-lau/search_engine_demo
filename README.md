@@ -1,5 +1,4 @@
-# cs291a-hw1
-hw1 for cs291a
+# search engine demo
 
 **you should have solr-7.2.1 downloaded to run this**
 
