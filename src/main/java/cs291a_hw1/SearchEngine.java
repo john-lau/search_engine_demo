@@ -13,15 +13,16 @@ public class SearchEngine {
 	
 	SolrClient client;
 	long startTime;
+	static final String solrUrl = "http://localhost:8983/solr/trec45";
+	static final String zkHost = "localhost:9100";
 	
 	public SearchEngine() {
-		this.client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45").build();
-//	    String zkHost = "localhost:9100";
+		this.client = new HttpSolrClient.Builder(solrUrl).build();
+		
 //	    CloudSolrClient client = new CloudSolrClient.Builder().withZkHost(zkHost).build();
 //	    client.setDefaultCollection("trec45_distributed");
 //	    client.connect();
 //	    this.client=client;
-//	    System.out.println("client successfully created!");
 	}
 	
 	
