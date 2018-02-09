@@ -4,7 +4,7 @@ hw1 for cs291a
 **you should have solr-7.2.1 downloaded to run this**
 
 How to Run:
-=================
+---------------
 To start up solr (you should be in the directory solr-7.2.1):
 -run the command "bin/solr start" for single solr
 For SolrCloud:
