@@ -20,6 +20,7 @@ public class WebService {
 	  );
 	  
 	  get("/test", (req, res) -> {
+		  
 		  String query = req.queryParams("query");
 		  query = query.equals("") ? "*:*" : query;
 		  
@@ -39,7 +40,13 @@ public class WebService {
 	  	System.out.println("Time taken for query is: " + elapsedTime);
 	  	
 		SolrDocumentList results = response.getResults();
-		String result = "<!DOCTYPE HTML><html>";
+		String result = "<!DOCTYPE HTML><html>" +
+				  "<form action='/test'>" +
+				  "<div class='search-form'><label for='query'>Search Query</label>" + 
+				  "<input id='query' name='query' class='query-search' type='text'></div>" +
+				  "<button type='submit' class='btn'>Search</button>" +
+				  "</form>";
+		
 		if (results.size() > 0) {
 			for(int i = 0; i < results.size(); ++i) {
 				result += "<p>" + results.get(i).toString() + "</p>\n";
@@ -59,5 +66,5 @@ public class WebService {
 	  String highlight = "<span style='background-color: #FFFF00'>" + query + "</span>";
 	  return string.replaceAll(query, highlight);
   }
-  
+
 }
