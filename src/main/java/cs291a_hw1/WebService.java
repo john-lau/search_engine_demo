@@ -22,16 +22,12 @@ public class WebService {
 	  get("/test", (req, res) -> {
 		  String query = req.queryParams("query");
 		  query = query.equals("") ? "*:*" : query;
+		  
 		  if(!query.equals("*:*") && !query.contains("title:") && !query.contains("docid:") && !query.contains("body:")) {
 			  return "Invalid query form, query was: " + query;
 		  }
-		  
-		  System.out.println("query form is fine, querying now!");
-		  
-		  QueryResponse response = engine.searchQuery(engine.client, 0, query);
-		  
-		  System.out.println("query response received");
-		  
+			  
+		  QueryResponse response = engine.searchQuery(engine.solrClient, 0, query);
 		  String q = query.equals("*:*") ? query : query.split(":")[1];		  
 		  return displayQueryResponse(engine, response, q);	 
 	  });
@@ -41,6 +37,7 @@ public class WebService {
 	  	long endTime = System.currentTimeMillis();
 	  	long elapsedTime = endTime-engine.startTime;
 	  	System.out.println("Time taken for query is: " + elapsedTime);
+	  	
 		SolrDocumentList results = response.getResults();
 		String result = "<!DOCTYPE HTML><html>";
 		if (results.size() > 0) {

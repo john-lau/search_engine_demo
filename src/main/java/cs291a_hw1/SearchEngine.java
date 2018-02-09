@@ -11,18 +11,15 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 
 public class SearchEngine {
 	
-	SolrClient client;
+	SolrClient solrClient;
+	SolrClient cloudSolrClient;
 	long startTime;
 	static final String solrUrl = "http://localhost:8983/solr/trec45";
 	static final String zkHost = "localhost:9100";
 	
 	public SearchEngine() {
-		this.client = new HttpSolrClient.Builder(solrUrl).build();
-		
-//	    CloudSolrClient client = new CloudSolrClient.Builder().withZkHost(zkHost).build();
-//	    client.setDefaultCollection("trec45_distributed");
-//	    client.connect();
-//	    this.client=client;
+		this.solrClient = getSolrClient();
+		this.cloudSolrClient = getCloudSolrClient();
 	}
 	
 	
@@ -40,5 +37,19 @@ public class SearchEngine {
 			return null;
 		}
 	}
+	
+	
+	public SolrClient getSolrClient() {
+		return new HttpSolrClient.Builder(solrUrl).build();	
+	}
+	
+	
+	public CloudSolrClient getCloudSolrClient() {
+	    CloudSolrClient client = new CloudSolrClient.Builder().withZkHost(zkHost).build();
+	    client.setDefaultCollection("trec45_distributed");
+	    client.connect();	
+	    return client;
+	}
+	
 
 }
