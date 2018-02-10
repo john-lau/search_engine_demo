@@ -19,7 +19,7 @@ public class SearchEngine {
 	
 	public SearchEngine() {
 		this.solrClient = getSolrClient();
-		this.cloudSolrClient = getCloudSolrClient();
+//		this.cloudSolrClient = getCloudSolrClient();
 	}
 	
 	
