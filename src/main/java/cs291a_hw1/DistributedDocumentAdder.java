@@ -18,7 +18,7 @@ public class DistributedDocumentAdder {
 	    CloudSolrClient client = new CloudSolrClient.Builder().withZkHost(zkHost).build();
 	    client.setDefaultCollection("trec45_distributed");
 	    client.connect();
-	    String file = "data/lines-trec45.txt";
+	    String file = "data/smaller.txt";
 	    addDocuments(client, file);
 	    client.commit(); 
 	  }

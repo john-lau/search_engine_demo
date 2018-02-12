@@ -14,8 +14,8 @@ public class DocumentAdder {
 	private static int flush = 0; //so we can periodically flush
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
-	    SolrClient client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45timetest").build();
-	    String file = "data/lines-trec45.txt";
+	    SolrClient client = new HttpSolrClient.Builder("http://localhost:8983/solr/trec45").build();
+	    String file = "data/smaller.txt";
 	    addDocuments(client, file);
 	    client.commit(); 
 	  }

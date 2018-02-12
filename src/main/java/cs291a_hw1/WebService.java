@@ -25,7 +25,7 @@ public class WebService {
 		  query = query.equals("") ? "*:*" : query;
 		  
 		  if(!query.equals("*:*") && !query.contains("title:") && !query.contains("docid:") && !query.contains("body:")) {
-			  return "Invalid query form, query was: " + query;
+			  return "Invalid query form, query was: " + query;	
 		  }
 			  
 		  QueryResponse response = engine.searchQuery(engine.solrClient, 0, query);
