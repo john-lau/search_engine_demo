@@ -10,9 +10,11 @@ For SolrCloud:
 - for the leader node, run the command "bin/solr start -c -p 8100 -s example/cloud/node1/solr"
 - for node 2 and 3, run the command "bin/solr start -c -p 8200 -z localhost:9100 -s example/cloud/node2/solr" and "bin/solr start -c -p 8300 -z localhost:9100 -s example/cloud/node3/solr"
 
+**Both solr and solrCloud should be running for the app to work because we create both clients by default.**
+
 Once Solr is running, you can compile the code and run WebService.java
 - By default it is set up to run single solr. If you want to change this, change engine.solrClient to engine.solrCloudClient in the line where we call engine.searchQuery
 
 **you should start up both single solr and SolrCloud before running WebService.java because searchEngine creates both clients by default**
 
-visit localhost:4567 to search. Query times should be printed out to your terminal / console.
+visit localhost:4567 to search. Query times are printed out to your terminal / console.
