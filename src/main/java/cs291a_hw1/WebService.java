@@ -29,7 +29,8 @@ public class WebService {
 		  }
 			  
 		  QueryResponse response = engine.searchQuery(engine.solrClient, 0, query);
-		  String q = query.equals("*:*") ? query : query.split(":")[1];		  
+		  String q = query.equals("*:*") ? query : query.split(":")[1];		
+		  
 		  return displayQueryResponse(engine, response, q);	 
 	  });
   }
@@ -63,8 +64,13 @@ public class WebService {
   }
   
   public static String highlightQuery(String string, String query) {
-	  String highlight = "<span style='background-color: #FFFF00'>" + query + "</span>";
-	  return string.replaceAll(query, highlight);
+	  if(query.startsWith("\"")) {
+		query=query.replace("\"", "");  
+	  }
+	  
+	  String highlight = "<span style='background-color: #FFFF00'>" + query + "</span>";	  
+	  String newResult = string.replaceAll(query, highlight);
+	  return newResult;
   }
 
 }
